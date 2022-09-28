@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'bottomNavbarScreen/home_screen.dart';
 import 'bottomNavbarScreen/message_screen.dart';
 import 'bottomNavbarScreen/profile_screen.dart';
@@ -14,7 +14,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
   List<Widget> screen = [HomeScreen(), MessageScreen(), ProfileScreen()];
+
   int tabScreen = 0;
   @override
   Widget build(BuildContext context) {
@@ -101,43 +104,23 @@ class _MainPageState extends State<MainPage> {
       //our app body section
       body: screen[tabScreen],
       //our app bottomNavbar section
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 11, 28, 85),
-        elevation: 10,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 25,
-        selectedFontSize: 20,
-        unselectedFontSize: 16,
-        // ignore: prefer_const_literals_to_create_immutables
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.message,
-              color: Colors.white,
-            ),
-            label: "Message",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-            label: "Profile",
-          ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.blueAccent,
+        items: <Widget>[
+          Icon(Icons.home, size: 30),
+          Icon(Icons.message, size: 30),
+          Icon(Icons.person, size: 30),
         ],
-        currentIndex: tabScreen,
+        color: Colors.white,
+        buttonBackgroundColor: Colors.white,
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 600),
         onTap: (index) {
           setState(() {
             tabScreen = index;
           });
         },
+        letIndexChange: (index) => true,
       ),
     );
   }

@@ -21,6 +21,7 @@ class _MessageScreenState extends State<MessageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 216, 216, 216),
       appBar: AppBar(
         title: Text("Message"),
       ),

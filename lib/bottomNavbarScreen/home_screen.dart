@@ -60,14 +60,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
-                              RotatedBox(
-                                quarterTurns: 2,
-                                child: Text(
-                                  "Hello",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 27,
-                                      fontWeight: FontWeight.bold),
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: RotatedBox(
+                                  quarterTurns: 1,
+                                  child: Text(
+                                    "Hello",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 27,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                               SizedBox(
